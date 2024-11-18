@@ -21,7 +21,7 @@ RUN if [ -f "Gemfile" ]; \
 #     then jekyll new . --force; \
 #     fi
 
-RUN if [ ! -f "_config.yml" ]; then jekyll new site; fi
+RUN if [ ! -f "_config.yml" ]; then jekyll new . --force; fi
 
 # RUN bundle add webrick && bundle exec jekyll serve
 # RUN bundle init && \
