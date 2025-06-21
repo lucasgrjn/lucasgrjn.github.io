@@ -4,65 +4,42 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout title="Fonderie - Hardware Design Tool">
     <div class="fonderie-container">
-        <header class="hero-section">
-            <div class="hero-content">
-                <h1>Fonderie</h1>
-                <p class="hero-subtitle">Advanced Hardware Design & Simulation Platform</p>
-                <p class="hero-description">
-                    A comprehensive tool for designing and simulating photonic integrated circuits, 
-                    featuring cutting-edge modeling capabilities and intuitive design workflows.
-                </p>
-                <div class="hero-actions">
-                    <a href="#features" class="btn-primary">Explore Features</a>
-                    <a href="https://github.com/yourusername/fonderie" target="_blank" rel="noopener noreferrer" class="btn-secondary">
-                        View on GitHub
-                    </a>
-                </div>
+        <header class="hero">
+            <h1 class="fonderie-text">Fonderie</h1>
+            <p class="tagline">Advanced hardware design and simulation platform for photonic integrated circuits</p>
+            <div class="hero-buttons">
+                <a href="/fonderie/getting-started" class="btn-primary">Get Started</a>
+                <a href="https://github.com/yourusername/fonderie" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+                    View on GitHub
+                </a>
             </div>
         </header>
 
-        <section id="features" class="features-section">
+        <!-- Features Section -->
+        <section class="features">
             <h2>Key Features</h2>
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">🔬</div>
-                    <h3>Photonics Simulation</h3>
-                    <p>Advanced electromagnetic simulation using FDTD and FEM methods for accurate optical modeling.</p>
+                    <h3>Photonic Simulation</h3>
+                    <p>Advanced electromagnetic simulation for optical devices with high accuracy and performance.</p>
                 </div>
-                
                 <div class="feature-card">
-                    <div class="feature-icon">🎨</div>
-                    <h3>Visual Design</h3>
-                    <p>Intuitive drag-and-drop interface for creating complex photonic circuits and components.</p>
+                    <h3>Circuit Design</h3>
+                    <p>Intuitive schematic editor for designing complex photonic integrated circuits.</p>
                 </div>
-                
                 <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
-                    <h3>High Performance</h3>
-                    <p>Optimized algorithms and GPU acceleration for fast simulation of large-scale designs.</p>
+                    <h3>Optimization</h3>
+                    <p>AI-powered optimization algorithms for device performance enhancement.</p>
                 </div>
-                
                 <div class="feature-card">
-                    <div class="feature-icon">📊</div>
-                    <h3>Analysis Tools</h3>
-                    <p>Comprehensive analysis including mode analysis, coupling calculations, and loss estimation.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">🔄</div>
-                    <h3>Parameter Optimization</h3>
-                    <p>Automated optimization algorithms to find optimal device parameters for your specifications.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">📁</div>
-                    <h3>Export Capabilities</h3>
-                    <p>Generate fabrication-ready files compatible with major foundry processes and EDA tools.</p>
+                    <h3>Fabrication Ready</h3>
+                    <p>Generate fabrication files compatible with major foundry processes.</p>
                 </div>
             </div>
         </section>
 
-        <section class="documentation-section">
+        <!-- Documentation Section -->
+        <section class="documentation">
             <h2>Documentation</h2>
             <div class="docs-grid">
                 <div class="doc-card">
@@ -70,71 +47,57 @@ import Layout from '../layouts/Layout.astro';
                     <p>Quick start guide to get you up and running with Fonderie in minutes.</p>
                     <a href="/fonderie/getting-started" class="doc-link">Read Guide →</a>
                 </div>
-                
                 <div class="doc-card">
                     <h3>User Manual</h3>
                     <p>Comprehensive documentation covering all features and capabilities.</p>
                     <a href="/fonderie/manual" class="doc-link">View Manual →</a>
                 </div>
-                
                 <div class="doc-card">
                     <h3>API Reference</h3>
-                    <p>Complete API documentation for developers and advanced users.</p>
+                    <p>Complete API documentation for developers and integrators.</p>
                     <a href="/fonderie/api" class="doc-link">Browse API →</a>
                 </div>
-                
                 <div class="doc-card">
                     <h3>Tutorials</h3>
-                    <p>Step-by-step tutorials for common design tasks and workflows.</p>
+                    <p>Step-by-step tutorials for common design workflows and use cases.</p>
                     <a href="/fonderie/tutorials" class="doc-link">Start Learning →</a>
                 </div>
             </div>
         </section>
 
-        <section class="examples-section">
+        <!-- Example Projects Section -->
+        <section class="examples">
             <h2>Example Projects</h2>
             <div class="examples-grid">
                 <div class="example-card">
-                    <h3>Directional Coupler</h3>
-                    <p>Design and simulate a directional coupler with variable coupling ratios.</p>
-                    <div class="example-meta">
-                        <span class="difficulty">Beginner</span>
-                        <span class="time">15 min</span>
-                    </div>
+                    <h3>Optical Filter Design</h3>
+                    <p>Design and simulate wavelength-selective filters for optical communication systems.</p>
+                    <a href="/fonderie/examples/filter" class="example-link">View Example →</a>
                 </div>
-                
                 <div class="example-card">
-                    <h3>Ring Resonator</h3>
-                    <p>Create a ring resonator filter with tunable resonance characteristics.</p>
-                    <div class="example-meta">
-                        <span class="difficulty">Intermediate</span>
-                        <span class="time">30 min</span>
-                    </div>
+                    <h3>Mode Converter</h3>
+                    <p>Create efficient mode converters for multi-mode optical systems.</p>
+                    <a href="/fonderie/examples/mode-converter" class="example-link">View Example →</a>
                 </div>
-                
                 <div class="example-card">
-                    <h3>Photonic Crystal Cavity</h3>
-                    <p>Design high-Q photonic crystal cavities for sensing applications.</p>
-                    <div class="example-meta">
-                        <span class="difficulty">Advanced</span>
-                        <span class="time">60 min</span>
-                    </div>
+                    <h3>Photonic Crystal</h3>
+                    <p>Design photonic crystal structures for advanced light manipulation.</p>
+                    <a href="/fonderie/examples/photonic-crystal" class="example-link">View Example →</a>
                 </div>
             </div>
         </section>
 
-        <section class="cta-section">
-            <div class="cta-content">
-                <h2>Ready to Start Designing?</h2>
-                <p>Join the community of photonic designers using Fonderie to create next-generation optical devices.</p>
-                <div class="cta-actions">
-                    <a href="https://github.com/yourusername/fonderie" target="_blank" rel="noopener noreferrer" class="btn-primary">
-                        Get Started
-                    </a>
-                    <a href="/fonderie/community" class="btn-secondary">
-                        Join Community
-                    </a>
-                </div>
+        <!-- Community Section -->
+        <section class="community">
+            <h2>Join the Community</h2>
+            <p>Join the community of photonic designers using Fonderie to create next-generation optical devices.</p>
+            <div class="community-buttons">
+                <a href="https://github.com/yourusername/fonderie" target="_blank" rel="noopener noreferrer" class="btn-primary">
+                    Contribute on GitHub
+                </a>
+                <a href="/fonderie/community" class="btn-secondary">
+                    Join Discussions
+                </a>
             </div>
         </section>
     </div>
@@ -146,35 +109,13 @@ import Layout from '../layouts/Layout.astro';
             padding: 0 1rem;
         }
 
-        .hero-section {
+        .hero {
             text-align: center;
             padding: 4rem 0;
             margin-bottom: 4rem;
         }
 
-        .hero-content h1 {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            color: var(--color-text);
-            font-weight: 700;
-        }
-
-        .hero-subtitle {
-            font-size: 1.5rem;
-            color: var(--color-link);
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-
-        .hero-description {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto 2rem auto;
-            line-height: 1.6;
-            color: var(--color-text);
-        }
-
-        .hero-actions {
+        .hero-buttons {
             display: flex;
             gap: 1rem;
             justify-content: center;
@@ -211,11 +152,11 @@ import Layout from '../layouts/Layout.astro';
             transform: translateY(-2px);
         }
 
-        .features-section, .documentation-section, .examples-section {
+        .features {
             margin-bottom: 4rem;
         }
 
-        .features-section h2, .documentation-section h2, .examples-section h2 {
+        .features h2 {
             font-size: 2.5rem;
             text-align: center;
             margin-bottom: 3rem;
@@ -241,11 +182,6 @@ import Layout from '../layouts/Layout.astro';
             transform: translateY(-8px);
             border-color: var(--color-link-hover);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
-
-        .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
         }
 
         .feature-card h3 {
@@ -301,6 +237,17 @@ import Layout from '../layouts/Layout.astro';
             color: var(--color-link-hover);
         }
 
+        .examples {
+            margin-bottom: 4rem;
+        }
+
+        .examples h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--color-text);
+        }
+
         .examples-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -332,29 +279,18 @@ import Layout from '../layouts/Layout.astro';
             line-height: 1.6;
         }
 
-        .example-meta {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .difficulty, .time {
-            padding: 0.3rem 0.8rem;
-            border-radius: 16px;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        .difficulty {
-            background: var(--color-link);
-            color: var(--color-bg);
-        }
-
-        .time {
-            border: 1px solid var(--color-link);
+        .example-link {
             color: var(--color-link);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s ease;
         }
 
-        .cta-section {
+        .example-link:hover {
+            color: var(--color-link-hover);
+        }
+
+        .community {
             background: linear-gradient(135deg, var(--color-bg) 0%, rgba(102, 126, 234, 0.1) 100%);
             border: 2px solid var(--color-link);
             border-radius: 16px;
@@ -363,13 +299,13 @@ import Layout from '../layouts/Layout.astro';
             margin-top: 4rem;
         }
 
-        .cta-content h2 {
+        .community h2 {
             font-size: 2.5rem;
             margin-bottom: 1rem;
             color: var(--color-text);
         }
 
-        .cta-content p {
+        .community p {
             font-size: 1.2rem;
             margin-bottom: 2rem;
             color: var(--color-text);
@@ -378,7 +314,7 @@ import Layout from '../layouts/Layout.astro';
             margin-right: auto;
         }
 
-        .cta-actions {
+        .community-buttons {
             display: flex;
             gap: 1rem;
             justify-content: center;
@@ -386,15 +322,7 @@ import Layout from '../layouts/Layout.astro';
         }
 
         @media (max-width: 768px) {
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1.2rem;
-            }
-
-            .hero-actions {
+            .hero-buttons {
                 flex-direction: column;
                 align-items: center;
             }
@@ -403,11 +331,11 @@ import Layout from '../layouts/Layout.astro';
                 grid-template-columns: 1fr;
             }
 
-            .cta-section {
+            .community {
                 padding: 2rem;
             }
 
-            .cta-content h2 {
+            .community h2 {
                 font-size: 2rem;
             }
         }

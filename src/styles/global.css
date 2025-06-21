@@ -1,0 +1,26 @@
+/* Global Fonderie Text Styling */
+.fonderie-text {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.15em;
+}
+
+/* Specific styling for Fonderie titles */
+h1.fonderie-text {
+    font-size: 3.5rem !important;
+    font-weight: 700;
+}
+
+h3.fonderie-text {
+    font-size: 1.8rem !important;
+    font-weight: 700;
+}
+
+/* Home page project showcase - make Fonderie text larger */
+.project-showcase h3.fonderie-text {
+    font-size: 2.2rem !important;
+    font-weight: 700;
+}
+
+.mangoustan-text {
+    font-family: 'Space Grotesk', sans-serif;
+}

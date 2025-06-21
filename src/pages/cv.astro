@@ -106,12 +106,12 @@ import Layout from '../layouts/Layout.astro';
         <section class="cv-section">
             <h2>Projects</h2>
             <div class="project-item">
-                <h3><a href="/fonderie">Fonderie</a></h3>
+                <h3><a href="/fonderie" class="fonderie-text">Fonderie</a></h3>
                 <p>A comprehensive tool for hardware design and simulation, featuring advanced photonic modeling capabilities.</p>
             </div>
             
             <div class="project-item">
-                <h3><a href="/mangoustan">Mangoustan</a></h3>
+                <h3><a href="/mangoustan" class="mangoustan-text">Mangoustan</a></h3>
                 <p>An AI learning platform and framework for exploring machine learning concepts and implementations.</p>
             </div>
         </section>
@@ -229,7 +229,7 @@ import Layout from '../layouts/Layout.astro';
 
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: 1fr;
             gap: 2rem;
         }
 

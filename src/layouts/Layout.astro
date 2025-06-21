@@ -1,6 +1,8 @@
 ---
 // src/layouts/Layout.astro
 
+import '../styles/global.css';
+
 export interface Props {
     title: string;
 }
@@ -16,6 +18,9 @@ const { title } = Astro.props;
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&family=Space+Grotesk:wght@300&family=Work+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+        <!-- Global Styles -->
+        <link rel="stylesheet" href="/src/styles/global.css">
 
         <!-- The JavaScript for the Dark Mode Toggle -->
         <!-- is:inline tells Astro to put this script directly in the HTML -->
