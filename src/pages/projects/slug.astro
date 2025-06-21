@@ -1,0 +1,205 @@
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { Content } = await project.render();
+
+<Layout title={`${project.data.title} - Projects`}>
+    <article class="project-article">
+        <header class="project-header">
+            <div class="project-meta">
+                <h1>{project.data.title}</h1>
+                <div class="project-info">
+                    <time datetime={project.data.date}>{project.data.date}</time>
+                    {project.data.tags && (
+                        <div class="project-tags">
+                            {project.data.tags.map((tag) => (
+                                <span class="tag">{tag}</span>
+                            ))}
+                        </div>
+                    )}
+                </div>
+                {project.data.github && (
+                    <a href={project.data.github} target="_blank" rel="noopener noreferrer" class="github-link">
+                        View on GitHub →
+                    </a>
+                )}
+            </div>
+        </header>
+
+        <div class="project-content">
+            <Content />
+        </div>
+
+        <footer class="project-footer">
+            <a href="/projects" class="back-link">← Back to Projects</a>
+        </footer>
+    </article>
+
+    <style>
+        .project-article {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .project-header {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--color-link);
+        }
+
+        .project-meta h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--color-text);
+        }
+
+        .project-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        time {
+            font-size: 1rem;
+            color: var(--color-link);
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: var(--color-link);
+            color: var(--color-bg);
+            padding: 0.3rem 0.8rem;
+            border-radius: 16px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .github-link {
+            display: inline-block;
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            background: var(--color-link);
+            color: var(--color-bg);
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .github-link:hover {
+            background: var(--color-link-hover);
+            transform: translateY(-2px);
+        }
+
+        .project-content {
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+
+        .project-content h2 {
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem 0;
+            color: var(--color-text);
+            border-bottom: 1px solid var(--color-link);
+            padding-bottom: 0.5rem;
+        }
+
+        .project-content h3 {
+            font-size: 1.4rem;
+            margin: 1.5rem 0 0.8rem 0;
+            color: var(--color-text);
+        }
+
+        .project-content p {
+            margin-bottom: 1.2rem;
+        }
+
+        .project-content ul, .project-content ol {
+            margin-bottom: 1.2rem;
+            padding-left: 2rem;
+        }
+
+        .project-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .project-content code {
+            background: var(--color-link);
+            color: var(--color-bg);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        .project-content pre {
+            background: var(--color-bg);
+            border: 1px solid var(--color-link);
+            border-radius: 8px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+        }
+
+        .project-content pre code {
+            background: none;
+            color: var(--color-text);
+            padding: 0;
+        }
+
+        .project-content blockquote {
+            border-left: 4px solid var(--color-link);
+            padding-left: 1rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: var(--color-link);
+        }
+
+        .project-footer {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--color-link);
+        }
+
+        .back-link {
+            text-decoration: none;
+            color: var(--color-link);
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+
+        .back-link:hover {
+            color: var(--color-link-hover);
+        }
+
+        @media (max-width: 768px) {
+            .project-meta h1 {
+                font-size: 2rem;
+            }
+
+            .project-info {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .project-content {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</Layout> 

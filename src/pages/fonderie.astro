@@ -1,0 +1,415 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Fonderie - Hardware Design Tool">
+    <div class="fonderie-container">
+        <header class="hero-section">
+            <div class="hero-content">
+                <h1>Fonderie</h1>
+                <p class="hero-subtitle">Advanced Hardware Design & Simulation Platform</p>
+                <p class="hero-description">
+                    A comprehensive tool for designing and simulating photonic integrated circuits, 
+                    featuring cutting-edge modeling capabilities and intuitive design workflows.
+                </p>
+                <div class="hero-actions">
+                    <a href="#features" class="btn-primary">Explore Features</a>
+                    <a href="https://github.com/yourusername/fonderie" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+                        View on GitHub
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <section id="features" class="features-section">
+            <h2>Key Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔬</div>
+                    <h3>Photonics Simulation</h3>
+                    <p>Advanced electromagnetic simulation using FDTD and FEM methods for accurate optical modeling.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Visual Design</h3>
+                    <p>Intuitive drag-and-drop interface for creating complex photonic circuits and components.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>High Performance</h3>
+                    <p>Optimized algorithms and GPU acceleration for fast simulation of large-scale designs.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Analysis Tools</h3>
+                    <p>Comprehensive analysis including mode analysis, coupling calculations, and loss estimation.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3>Parameter Optimization</h3>
+                    <p>Automated optimization algorithms to find optimal device parameters for your specifications.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📁</div>
+                    <h3>Export Capabilities</h3>
+                    <p>Generate fabrication-ready files compatible with major foundry processes and EDA tools.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="documentation-section">
+            <h2>Documentation</h2>
+            <div class="docs-grid">
+                <div class="doc-card">
+                    <h3>Getting Started</h3>
+                    <p>Quick start guide to get you up and running with Fonderie in minutes.</p>
+                    <a href="/fonderie/getting-started" class="doc-link">Read Guide →</a>
+                </div>
+                
+                <div class="doc-card">
+                    <h3>User Manual</h3>
+                    <p>Comprehensive documentation covering all features and capabilities.</p>
+                    <a href="/fonderie/manual" class="doc-link">View Manual →</a>
+                </div>
+                
+                <div class="doc-card">
+                    <h3>API Reference</h3>
+                    <p>Complete API documentation for developers and advanced users.</p>
+                    <a href="/fonderie/api" class="doc-link">Browse API →</a>
+                </div>
+                
+                <div class="doc-card">
+                    <h3>Tutorials</h3>
+                    <p>Step-by-step tutorials for common design tasks and workflows.</p>
+                    <a href="/fonderie/tutorials" class="doc-link">Start Learning →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="examples-section">
+            <h2>Example Projects</h2>
+            <div class="examples-grid">
+                <div class="example-card">
+                    <h3>Directional Coupler</h3>
+                    <p>Design and simulate a directional coupler with variable coupling ratios.</p>
+                    <div class="example-meta">
+                        <span class="difficulty">Beginner</span>
+                        <span class="time">15 min</span>
+                    </div>
+                </div>
+                
+                <div class="example-card">
+                    <h3>Ring Resonator</h3>
+                    <p>Create a ring resonator filter with tunable resonance characteristics.</p>
+                    <div class="example-meta">
+                        <span class="difficulty">Intermediate</span>
+                        <span class="time">30 min</span>
+                    </div>
+                </div>
+                
+                <div class="example-card">
+                    <h3>Photonic Crystal Cavity</h3>
+                    <p>Design high-Q photonic crystal cavities for sensing applications.</p>
+                    <div class="example-meta">
+                        <span class="difficulty">Advanced</span>
+                        <span class="time">60 min</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="cta-content">
+                <h2>Ready to Start Designing?</h2>
+                <p>Join the community of photonic designers using Fonderie to create next-generation optical devices.</p>
+                <div class="cta-actions">
+                    <a href="https://github.com/yourusername/fonderie" target="_blank" rel="noopener noreferrer" class="btn-primary">
+                        Get Started
+                    </a>
+                    <a href="/fonderie/community" class="btn-secondary">
+                        Join Community
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <style>
+        .fonderie-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .hero-section {
+            text-align: center;
+            padding: 4rem 0;
+            margin-bottom: 4rem;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: var(--color-text);
+            font-weight: 700;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--color-link);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem auto;
+            line-height: 1.6;
+            color: var(--color-text);
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--color-link);
+            color: var(--color-bg);
+        }
+
+        .btn-primary:hover {
+            background: var(--color-link-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            border: 2px solid var(--color-link);
+            color: var(--color-link);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-link);
+            color: var(--color-bg);
+            transform: translateY(-2px);
+        }
+
+        .features-section, .documentation-section, .examples-section {
+            margin-bottom: 4rem;
+        }
+
+        .features-section h2, .documentation-section h2, .examples-section h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--color-text);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--color-bg);
+            border: 1px solid var(--color-link);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--color-link-hover);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--color-text);
+        }
+
+        .feature-card p {
+            color: var(--color-text);
+            line-height: 1.6;
+        }
+
+        .docs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .doc-card {
+            background: var(--color-bg);
+            border: 1px solid var(--color-link);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .doc-card:hover {
+            border-color: var(--color-link-hover);
+            transform: translateY(-4px);
+        }
+
+        .doc-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--color-text);
+        }
+
+        .doc-card p {
+            margin-bottom: 1.5rem;
+            color: var(--color-text);
+            line-height: 1.6;
+        }
+
+        .doc-link {
+            color: var(--color-link);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+
+        .doc-link:hover {
+            color: var(--color-link-hover);
+        }
+
+        .examples-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .example-card {
+            background: var(--color-bg);
+            border: 1px solid var(--color-link);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .example-card:hover {
+            border-color: var(--color-link-hover);
+            transform: translateY(-4px);
+        }
+
+        .example-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--color-text);
+        }
+
+        .example-card p {
+            margin-bottom: 1.5rem;
+            color: var(--color-text);
+            line-height: 1.6;
+        }
+
+        .example-meta {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .difficulty, .time {
+            padding: 0.3rem 0.8rem;
+            border-radius: 16px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .difficulty {
+            background: var(--color-link);
+            color: var(--color-bg);
+        }
+
+        .time {
+            border: 1px solid var(--color-link);
+            color: var(--color-link);
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, var(--color-bg) 0%, rgba(102, 126, 234, 0.1) 100%);
+            border: 2px solid var(--color-link);
+            border-radius: 16px;
+            padding: 3rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .cta-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--color-text);
+        }
+
+        .cta-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--color-text);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .features-grid, .docs-grid, .examples-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-section {
+                padding: 2rem;
+            }
+
+            .cta-content h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</Layout>

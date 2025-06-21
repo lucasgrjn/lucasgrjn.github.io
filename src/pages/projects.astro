@@ -1,0 +1,477 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+// SORTING CONFIGURATION
+// Choose one of: 'date' or 'manual'
+const SORT_MODE = 'manual' as 'date' | 'manual';
+
+// Manual order configuration (only used when SORT_MODE = 'manual')
+const MANUAL_ORDER = [
+  "photonic-simulator",           // Photonic Integrated Circuit Simulator
+  "ai-image-generator",           // AI Image Generator
+  "quantum-computing-simulator",  // Quantum Computing Simulator
+  "iot-smart-home",               // IoT Smart Home System
+  "empty-project"                 // Empty Project Template
+];
+
+// Get all markdown files from the projects collection
+let projects = await getCollection('projects');
+
+// Sort projects based on the selected mode
+if (SORT_MODE === 'date') {
+  // Sort by date (newest first)
+  projects = projects.sort((a, b) => {
+    const dateA = new Date(a.data.date).getTime();
+    const dateB = new Date(b.data.date).getTime();
+    return dateB - dateA;
+  });
+} else if (SORT_MODE === 'manual') {
+  // Sort by manual order
+  projects = projects.sort((a, b) => {
+    const aIndex = MANUAL_ORDER.indexOf(a.slug);
+    const bIndex = MANUAL_ORDER.indexOf(b.slug);
+    
+    // If both items are in the manual order, sort by their position
+    if (aIndex !== -1 && bIndex !== -1) {
+      return aIndex - bIndex;
+    }
+    
+    // If only one item is in the manual order, prioritize it
+    if (aIndex !== -1) return -1;
+    if (bIndex !== -1) return 1;
+    
+    // If neither item is in the manual order, sort alphabetically
+    return a.slug.localeCompare(b.slug);
+  });
+}
+
+// Convert projects to JSON for client-side use
+const projectsData = projects.map(project => ({
+  slug: project.slug,
+  title: project.data.title,
+  date: project.data.date,
+  excerpt: project.data.excerpt,
+  tags: project.data.tags,
+  github: project.data.github
+}));
+---
+
+<Layout title="Projects - Lucas Grjn">
+    <div class="projects-container">
+        <header class="projects-header">
+            <h1>My Projects</h1>
+            <p>A collection of my work in hardware engineering, photonics, and AI</p>
+            <div class="sorting-controls">
+                <button id="sortButton" class="sort-button">
+                    Sort by Date
+                </button>
+                <span class="sort-description">Currently showing manual order</span>
+            </div>
+        </header>
+
+        <div class="projects-grid" id="projectsGrid">
+            {projects.map((project) => (
+                <article class="project-card" data-slug={project.slug} data-date={project.data.date}>
+                    <div class="project-header">
+                        <h2>{project.data.title}</h2>
+                        <div class="project-meta">
+                            <span class="project-date">{project.data.date}</span>
+                            {project.data.tags && (
+                                <div class="project-tags">
+                                    {project.data.tags.map((tag) => (
+                                        <span class="tag">{tag}</span>
+                                    ))}
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                    
+                    <div class="project-excerpt">
+                        <p>{project.data.excerpt}</p>
+                    </div>
+                    
+                    <div class="project-links">
+                        <a href={`/projects/${project.slug}`} class="read-more">
+                            Read More →
+                        </a>
+                        {project.data.github && (
+                            <a href={project.data.github} target="_blank" rel="noopener noreferrer" class="github-link">
+                                View on GitHub
+                            </a>
+                        )}
+                    </div>
+                </article>
+            ))}
+        </div>
+
+        <!-- Featured Projects Section -->
+        <section class="featured-projects">
+            <h2>Featured Projects</h2>
+            <div class="featured-grid">
+                <div class="featured-card fonderie">
+                    <div class="featured-content">
+                        <h3>Fonderie</h3>
+                        <p>A comprehensive tool for hardware design and simulation, featuring advanced photonic modeling capabilities.</p>
+                        <div class="featured-links">
+                            <a href="/fonderie" class="featured-link">Learn More</a>
+                            <a href="https://github.com/yourusername/fonderie" target="_blank" rel="noopener noreferrer" class="featured-link">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="featured-card mangoustan">
+                    <div class="featured-content">
+                        <h3>Mangoustan</h3>
+                        <p>An AI learning platform and framework for exploring machine learning concepts and implementations.</p>
+                        <div class="featured-links">
+                            <a href="/mangoustan" class="featured-link">Learn More</a>
+                            <a href="https://github.com/yourusername/mangoustan" target="_blank" rel="noopener noreferrer" class="featured-link">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script define:vars={{ projectsData, MANUAL_ORDER }}>
+        // Client-side sorting functionality
+        const sortButton = document.getElementById('sortButton');
+        const projectsGrid = document.getElementById('projectsGrid');
+        const projectCards = Array.from(document.querySelectorAll('.project-card'));
+        const sortDescription = document.querySelector('.sort-description');
+        let isDateSort = false; // Start with manual sort
+
+        function sortProjects(byDate = false) {
+            const sortedCards = [...projectCards];
+            
+            if (byDate) {
+                // Sort by date (newest first)
+                sortedCards.sort((a, b) => {
+                    const dateA = new Date(a.dataset.date).getTime();
+                    const dateB = new Date(b.dataset.date).getTime();
+                    return dateB - dateA;
+                });
+            } else {
+                // Sort by manual order
+                sortedCards.sort((a, b) => {
+                    const aIndex = MANUAL_ORDER.indexOf(a.dataset.slug);
+                    const bIndex = MANUAL_ORDER.indexOf(b.dataset.slug);
+                    
+                    if (aIndex !== -1 && bIndex !== -1) {
+                        return aIndex - bIndex;
+                    }
+                    
+                    if (aIndex !== -1) return -1;
+                    if (bIndex !== -1) return 1;
+                    
+                    return a.dataset.slug.localeCompare(b.dataset.slug);
+                });
+            }
+            
+            // Re-append cards in sorted order
+            sortedCards.forEach(card => projectsGrid.appendChild(card));
+            
+            // Update button text and description
+            if (byDate) {
+                sortButton.textContent = 'Change to Suggested order';
+                sortDescription.textContent = 'Currently showing date order (newest first)';
+                sortButton.classList.add('date');
+            } else {
+                sortButton.textContent = 'Change to Chronological order';
+                sortDescription.textContent = 'Currently showing suggested order';
+                sortButton.classList.remove('date');
+            }
+        }
+
+        // Initialize with manual sort (default)
+        sortProjects(false);
+
+        // Handle button click
+        sortButton.addEventListener('click', () => {
+            isDateSort = !isDateSort;
+            sortProjects(isDateSort);
+        });
+    </script>
+
+    <style>
+        .projects-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .projects-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .projects-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--color-text);
+        }
+
+        .projects-header p {
+            font-size: 1.2rem;
+            color: var(--color-link);
+            max-width: 600px;
+            margin: 0 auto 1rem auto;
+        }
+
+        .sorting-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .sort-button {
+            background: var(--color-link);
+            color: var(--color-bg);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .sort-button:hover {
+            background: var(--color-link-hover);
+            transform: translateY(-2px);
+        }
+
+        .sort-description {
+            font-size: 0.9rem;
+            color: var(--color-link);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .project-card {
+            background: var(--color-bg);
+            border: 1px solid var(--color-link);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border-color: var(--color-link-hover);
+        }
+
+        .project-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .project-header h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--color-text);
+        }
+
+        .project-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .project-date {
+            font-size: 0.9rem;
+            color: var(--color-link);
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: var(--color-link);
+            color: var(--color-bg);
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .project-excerpt {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .read-more, .github-link {
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .read-more {
+            background: var(--color-link);
+            color: var(--color-bg);
+        }
+
+        .read-more:hover {
+            background: var(--color-link-hover);
+            transform: translateY(-2px);
+        }
+
+        .github-link {
+            border: 1px solid var(--color-link);
+            color: var(--color-link);
+        }
+
+        .github-link:hover {
+            background: var(--color-link);
+            color: var(--color-bg);
+        }
+
+        .featured-projects {
+            margin-top: 4rem;
+        }
+
+        .featured-projects h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: var(--color-text);
+        }
+
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+
+        .featured-card {
+            background: linear-gradient(135deg, var(--color-bg) 0%, rgba(102, 126, 234, 0.1) 100%);
+            border: 2px solid var(--color-link);
+            border-radius: 16px;
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .featured-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .featured-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--color-link-hover);
+        }
+
+        .featured-card:hover::before {
+            opacity: 1;
+        }
+
+        .featured-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .featured-content h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--color-text);
+        }
+
+        .featured-content p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            color: var(--color-text);
+        }
+
+        .featured-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .featured-link {
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            border: 2px solid var(--color-link);
+            color: var(--color-link);
+        }
+
+        .featured-link:hover {
+            background: var(--color-link);
+            color: var(--color-bg);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .projects-header h1 {
+                font-size: 2rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .featured-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-meta {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .featured-links {
+                flex-direction: column;
+            }
+
+            .sorting-controls {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</Layout>

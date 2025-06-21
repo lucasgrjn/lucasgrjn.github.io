@@ -18,7 +18,423 @@
 ---
 import Layout from '../layouts/Layout.astro';
 ---
-<Layout title="Home">
-    <h2>Welcome to My Website</h2>
-    <p>This is my personal portfolio. I'm a hardware engineer passionate about photonics and AI.</p>
+
+<Layout title="Lucas Grjn - Hardware Engineer & AI Enthusiast">
+    <div class="home-container">
+        <header class="hero-section">
+            <div class="hero-content">
+                <h1>Lucas Grjn</h1>
+                <p class="hero-subtitle">Hardware Engineer & AI Enthusiast</p>
+                <p class="hero-description">
+                    Passionate about photonics and artificial intelligence. 
+                    Building tools and sharing knowledge to advance the field of optical computing and AI.
+                </p>
+                <div class="hero-actions">
+                    <a href="/cv" class="btn-primary">View CV</a>
+                    <a href="/projects" class="btn-secondary">See Projects</a>
+                </div>
+            </div>
+        </header>
+
+        <section class="about-section">
+            <div class="about-content">
+                <h2>About Me</h2>
+                <p>
+                    I'm a hardware engineer with a deep passion for photonics and artificial intelligence. 
+                    My work focuses on developing innovative solutions that bridge the gap between optical 
+                    technologies and modern computing systems.
+                </p>
+                <p>
+                    Through my projects and research, I aim to contribute to the advancement of photonic 
+                    integrated circuits and AI applications, while sharing knowledge with the community.
+                </p>
+            </div>
+        </section>
+
+        <section class="main-projects">
+            <h2>Featured Projects</h2>
+            <div class="projects-showcase">
+                <div class="project-showcase fonderie">
+                    <div class="project-content">
+                        <h3>Fonderie</h3>
+                        <p>Advanced hardware design and simulation platform for photonic integrated circuits.</p>
+                        <div class="project-features">
+                            <span>Photonics Simulation</span>
+                            <span>Visual Design</span>
+                            <span>High Performance</span>
+                        </div>
+                        <a href="/fonderie" class="project-link">Learn More →</a>
+                    </div>
+                </div>
+                
+                <div class="project-showcase mangoustan">
+                    <div class="project-content">
+                        <h3>Mangoustan</h3>
+                        <p>Comprehensive AI learning platform with interactive tutorials and practical projects.</p>
+                        <div class="project-features">
+                            <span>Interactive Learning</span>
+                            <span>Project-Based</span>
+                            <span>Community Support</span>
+                        </div>
+                        <a href="/mangoustan" class="project-link">Start Learning →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="expertise-section">
+            <h2>Areas of Expertise</h2>
+            <div class="expertise-grid">
+                <div class="expertise-card">
+                    <div class="expertise-icon">🔬</div>
+                    <h3>Photonics</h3>
+                    <p>Design and simulation of photonic integrated circuits, optical systems, and laser technologies.</p>
+                </div>
+                
+                <div class="expertise-card">
+                    <div class="expertise-icon">🤖</div>
+                    <h3>Artificial Intelligence</h3>
+                    <p>Machine learning, deep learning, computer vision, and AI system development.</p>
+                </div>
+                
+                <div class="expertise-card">
+                    <div class="expertise-icon">⚡</div>
+                    <h3>Hardware Design</h3>
+                    <p>PCB design, FPGA programming, microcontroller systems, and circuit simulation.</p>
+                </div>
+                
+                <div class="expertise-card">
+                    <div class="expertise-icon">💻</div>
+                    <h3>Software Development</h3>
+                    <p>Python, C/C++, embedded systems, and full-stack web development.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-section">
+            <div class="contact-content">
+                <h2>Get in Touch</h2>
+                <p>Interested in collaboration, research opportunities, or just want to chat about photonics and AI?</p>
+                <div class="contact-links">
+                    <a href="mailto:your.email@example.com" class="contact-link">Email</a>
+                    <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" class="contact-link">LinkedIn</a>
+                    <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" class="contact-link">GitHub</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <style>
+        .home-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .hero-section {
+            text-align: center;
+            padding: 6rem 0 4rem 0;
+            margin-bottom: 4rem;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: var(--color-text);
+            font-weight: 700;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--color-link);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem auto;
+            line-height: 1.6;
+            color: var(--color-text);
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--color-link);
+            color: var(--color-bg);
+        }
+
+        .btn-primary:hover {
+            background: var(--color-link-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            border: 2px solid var(--color-link);
+            color: var(--color-link);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-link);
+            color: var(--color-bg);
+            transform: translateY(-2px);
+        }
+
+        .about-section {
+            margin-bottom: 4rem;
+            padding: 3rem 0;
+            border-top: 1px solid var(--color-link);
+            border-bottom: 1px solid var(--color-link);
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--color-text);
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            color: var(--color-text);
+        }
+
+        .main-projects {
+            margin-bottom: 4rem;
+        }
+
+        .main-projects h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--color-text);
+        }
+
+        .projects-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-showcase {
+            background: var(--color-bg);
+            border: 2px solid var(--color-link);
+            border-radius: 16px;
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-showcase::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .project-showcase:hover {
+            transform: translateY(-8px);
+            border-color: var(--color-link-hover);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-content h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--color-text);
+        }
+
+        .project-content p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            color: var(--color-text);
+        }
+
+        .project-features {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .project-features span {
+            background: var(--color-link);
+            color: var(--color-bg);
+            padding: 0.4rem 0.8rem;
+            border-radius: 16px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .project-link {
+            color: var(--color-link);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: color 0.2s ease;
+        }
+
+        .project-link:hover {
+            color: var(--color-link-hover);
+        }
+
+        .expertise-section {
+            margin-bottom: 4rem;
+        }
+
+        .expertise-section h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--color-text);
+        }
+
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .expertise-card {
+            background: var(--color-bg);
+            border: 1px solid var(--color-link);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .expertise-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--color-link-hover);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .expertise-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .expertise-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--color-text);
+        }
+
+        .expertise-card p {
+            color: var(--color-text);
+            line-height: 1.6;
+        }
+
+        .contact-section {
+            background: linear-gradient(135deg, var(--color-bg) 0%, rgba(102, 126, 234, 0.1) 100%);
+            border: 2px solid var(--color-link);
+            border-radius: 16px;
+            padding: 3rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .contact-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--color-text);
+        }
+
+        .contact-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--color-text);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            border: 2px solid var(--color-link);
+            color: var(--color-link);
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .contact-link:hover {
+            background: var(--color-link);
+            color: var(--color-bg);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .projects-showcase {
+                grid-template-columns: 1fr;
+            }
+
+            .expertise-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-section {
+                padding: 2rem;
+            }
+
+            .contact-content h2 {
+                font-size: 2rem;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
 </Layout>
