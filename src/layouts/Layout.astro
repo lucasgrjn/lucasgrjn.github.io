@@ -7,7 +7,7 @@ export interface Props {
 const { title } = Astro.props;
 ---
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light"> <!-- Default theme is light -->
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width" />
@@ -17,26 +17,70 @@ const { title } = Astro.props;
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&family=Space+Grotesk:wght@300&family=Work+Sans:wght@400;700&display=swap" rel="stylesheet">
 
+        <!-- The JavaScript for the Dark Mode Toggle -->
+        <!-- is:inline tells Astro to put this script directly in the HTML -->
+        <!-- This runs immediately to prevent a "flash of the wrong theme" -->
+        <script is:inline>
+            const getTheme = () => {
+                if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+                    return localStorage.getItem('theme');
+                }
+                if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    return 'dark';
+                }
+                return 'light';
+            };
+
+            const theme = getTheme();
+
+            if (theme === 'light') {
+                document.documentElement.setAttribute('data-theme', 'light');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        </script>
+
         <style>
+            /* --- FIX 2: CSS Variables for Theming --- */
+            :root {
+                /* Light Mode Colors */
+                --color-bg: #fdfdfd;
+                --color-text: #111;
+                --color-link: #555;
+                --color-link-hover: #000;
+            }
+
+            [data-theme='dark'] {
+                /* Dark Mode Colors */
+                --color-bg: #121212;
+                --color-text: #eee;
+                --color-link: #aaa;
+                --color-link-hover: #fff;
+            }
+
             /* --- General Styles --- */
             body {
                 font-family: 'Work Sans', sans-serif;
-                background-color: #fdfdfd;
-                color: #111;
+                /* Use CSS variables for colors */
+                background-color: var(--color-bg);
+                color: var(--color-text);
                 margin: 0;
                 padding: 2rem;
                 display: flex;
                 flex-direction: column;
                 min-height: 100vh;
+                transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
             }
 
             /* --- Navigation Styles --- */
             nav {
                 display: flex;
                 justify-content: space-between;
-                width: 600px;
+                width: 750px;
                 margin-bottom: 2rem;
                 align-self: flex-end;
+                /* FIX 1: Add margin to the right to create space from the window edge */
+                margin-right: 2rem;
             }
 
             /* --- Main Content Styles --- */
@@ -51,60 +95,41 @@ const { title } = Astro.props;
             nav a {
                 position: relative;
                 text-decoration: none;
-                color: #555;
+                color: var(--color-link); /* Use CSS variable */
                 font-size: 1.1rem;
                 line-height: 1.5;
                 text-align: center;
                 transition: color 0.2s ease-in-out;
             }
             nav a:hover {
-                color: #000;
+                color: var(--color-link-hover); /* Use CSS variable */
             }
 
-            /* --- Generic Text Illusion Styles --- */
-            .default-text, .hover-text {
-                display: block;
-                transition: opacity 0.2s ease-in-out;
+            /* --- Dark Mode Toggle Button Style --- */
+            .theme-toggle {
+                background: none;
+                border: 1px solid var(--color-link);
+                color: var(--color-link);
+                border-radius: 4px;
+                padding: 0.25em 0.5em;
+                cursor: pointer;
+                font-family: 'Work Sans', sans-serif;
+                font-size: 0.9rem;
             }
-            .hover-text {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                width: 100%;
-                opacity: 0;
-                pointer-events: none;
-            }
-            nav a:hover .default-text {
-                opacity: 0;
-            }
-            nav a:hover .hover-text {
-                opacity: 1;
+            .theme-toggle:hover {
+                background-color: var(--color-link);
+                color: var(--color-bg);
             }
 
-            /* --- Specific Styles for Each Hover Text --- */
-            .fonderie-hover-text {
-                font-family: 'EB Garamond', serif;
-                font-size: 1.2em;
-            }
-            .mangoustan-hover-text {
-                font-family: 'Space Grotesk', sans-serif;
-            }
-            
-            /* --- Icon Logic --- */
-            .nav-icon {
-                position: absolute;
-                left: -1.5em;
-                top: 50%;
-                transform: translateY(-50%);
-                height: 1em;
-                width: 1em;
-                opacity: 0;
-                transition: opacity 0.2s ease-in-out;
-            }
-            nav a:hover .nav-icon {
-                opacity: 1;
-            }
+            /* --- Illusion and Icon Styles (No changes here) --- */
+            .default-text, .hover-text { display: block; transition: opacity 0.2s ease-in-out; }
+            .hover-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100%; opacity: 0; pointer-events: none; }
+            nav a:hover .default-text { opacity: 0; }
+            nav a:hover .hover-text { opacity: 1; }
+            .fonderie-hover-text { font-family: 'EB Garamond', serif; font-size: 1.15em; }
+            .mangoustan-hover-text { font-family: 'Space Grotesk', sans-serif; }
+            .nav-icon { position: absolute; left: -1.5em; top: 50%; transform: translateY(-50%); height: 1em; width: 1em; opacity: 0; transition: opacity 0.2s ease-in-out; }
+            nav a:hover .nav-icon { opacity: 1; }
         </style>
     </head>
     <body>
@@ -113,21 +138,42 @@ const { title } = Astro.props;
             <a href="/cv">CV</a>
             <a href="/projects">Projects</a>
             
-            <a href="YOUR_FONDERIE_GITHUB_URL" target="_blank" rel="noopener noreferrer">
-                <img src="/src/images/icon_fonderie.png" alt="Fonderie Icon" class="nav-icon" />
+            <!-- <a href="YOUR_FONDERIE_GITHUB_URL" target="_blank" rel="noopener noreferrer"> -->
+            <a href="/fonderie">
+                <img src="src/images/icon_fonderie.png" alt="Fonderie Icon" class="nav-icon" />
                 <span class="default-text">Fonderie</span>
                 <span class="hover-text fonderie-hover-text">Fonderie</span>
             </a>
 
-            <!-- FIX: Apply the same two-span structure to Mangoustan -->
-            <a href="YOUR_MANGOUSTAN_GITHUB_URL" target="_blank" rel="noopener noreferrer">
-                <img src="/src/images/icon_mangoustan.png" alt="Mangoustan Icon" class="nav-icon" />
+            <!-- <a href="YOUR_MANGOUSTAN_GITHUB_URL" target="_blank" rel="noopener noreferrer"> -->
+            <a href="/mangoustan">
+                <img src="src/images/icon_mangoustan.png" alt="Mangoustan Icon" class="nav-icon" />
                 <span class="default-text">Mangoustan</span>
                 <span class="hover-text mangoustan-hover-text">Mangoustan</span>
             </a>
+
+            <!-- The HTML for the theme toggle button -->
+            <button id="theme-toggle" class="theme-toggle">Toggle Theme</button>
         </nav>
         <main>
             <slot />
         </main>
+
+        <!-- The JavaScript to make the button interactive -->
+        <script>
+            const toggleButton = document.getElementById('theme-toggle');
+            
+            toggleButton.addEventListener('click', () => {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                let targetTheme = 'light';
+
+                if (currentTheme === 'light') {
+                    targetTheme = 'dark';
+                }
+
+                document.documentElement.setAttribute('data-theme', targetTheme);
+                localStorage.setItem('theme', targetTheme);
+            });
+        </script>
     </body>
 </html>
