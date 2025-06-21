@@ -1,0 +1,133 @@
+---
+// src/layouts/Layout.astro
+
+export interface Props {
+    title: string;
+}
+const { title } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>{title}</title>
+        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&family=Space+Grotesk:wght@300&family=Work+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+        <style>
+            /* --- General Styles --- */
+            body {
+                font-family: 'Work Sans', sans-serif;
+                background-color: #fdfdfd;
+                color: #111;
+                margin: 0;
+                padding: 2rem;
+                display: flex;
+                flex-direction: column;
+                min-height: 100vh;
+            }
+
+            /* --- Navigation Styles --- */
+            nav {
+                display: flex;
+                justify-content: space-between;
+                width: 600px;
+                margin-bottom: 2rem;
+                align-self: flex-end;
+            }
+
+            /* --- Main Content Styles --- */
+            main {
+                width: 100%;
+                max-width: 800px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            /* --- Link Styles --- */
+            nav a {
+                position: relative;
+                text-decoration: none;
+                color: #555;
+                font-size: 1.1rem;
+                line-height: 1.5;
+                text-align: center;
+                transition: color 0.2s ease-in-out;
+            }
+            nav a:hover {
+                color: #000;
+            }
+
+            /* --- Generic Text Illusion Styles --- */
+            .default-text, .hover-text {
+                display: block;
+                transition: opacity 0.2s ease-in-out;
+            }
+            .hover-text {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 100%;
+                opacity: 0;
+                pointer-events: none;
+            }
+            nav a:hover .default-text {
+                opacity: 0;
+            }
+            nav a:hover .hover-text {
+                opacity: 1;
+            }
+
+            /* --- Specific Styles for Each Hover Text --- */
+            .fonderie-hover-text {
+                font-family: 'EB Garamond', serif;
+                font-size: 1.2em;
+            }
+            .mangoustan-hover-text {
+                font-family: 'Space Grotesk', sans-serif;
+            }
+            
+            /* --- Icon Logic --- */
+            .nav-icon {
+                position: absolute;
+                left: -1.5em;
+                top: 50%;
+                transform: translateY(-50%);
+                height: 1em;
+                width: 1em;
+                opacity: 0;
+                transition: opacity 0.2s ease-in-out;
+            }
+            nav a:hover .nav-icon {
+                opacity: 1;
+            }
+        </style>
+    </head>
+    <body>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/cv">CV</a>
+            <a href="/projects">Projects</a>
+            
+            <a href="YOUR_FONDERIE_GITHUB_URL" target="_blank" rel="noopener noreferrer">
+                <img src="/src/images/icon_fonderie.png" alt="Fonderie Icon" class="nav-icon" />
+                <span class="default-text">Fonderie</span>
+                <span class="hover-text fonderie-hover-text">Fonderie</span>
+            </a>
+
+            <!-- FIX: Apply the same two-span structure to Mangoustan -->
+            <a href="YOUR_MANGOUSTAN_GITHUB_URL" target="_blank" rel="noopener noreferrer">
+                <img src="/src/images/icon_mangoustan.png" alt="Mangoustan Icon" class="nav-icon" />
+                <span class="default-text">Mangoustan</span>
+                <span class="hover-text mangoustan-hover-text">Mangoustan</span>
+            </a>
+        </nav>
+        <main>
+            <slot />
+        </main>
+    </body>
+</html>

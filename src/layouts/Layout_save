@@ -1,0 +1,68 @@
+---
+export interface Props {
+    title: string;
+}
+const { title } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF--8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>{title}</title>
+        
+        <!-- Add Google Fonts for the hover effect -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+        <style>
+            /* Basic modern, minimalistic styles */
+            body {
+                font-family: 'Inter', sans-serif;
+                background-color: #fdfdfd;
+                color: #111;
+                margin: 0;
+                padding: 2rem;
+                max-width: 800px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            nav {
+                display: flex;
+                gap: 1.5rem;
+                margin-bottom: 2rem;
+                border-bottom: 1px solid #eee;
+                padding-bottom: 1rem;
+            }
+            nav a {
+                text-decoration: none;
+                color: #555;
+                font-size: 1.1rem;
+                transition: all 0.2s ease-in-out;
+            }
+            nav a:hover {
+                color: #000;
+            }
+
+            /* The special font-hover effect! */
+            .nav-special:hover {
+                font-family: 'Share Tech Mono', monospace;
+            }
+        </style>
+    </head>
+    <body>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/cv">CV</a>
+            <a href="/projects">Projects</a>
+            <!-- External links open in a new tab -->
+            <a href="YOUR_FONDERIE_GITHUB_URL" class="nav-special" target="_blank" rel="noopener noreferrer">Fonderie</a>
+            <a href="YOUR_MANGOUSTAN_GITHUB_URL" class="nav-special" target="_blank" rel="noopener noreferrer">Mangoustan</a>
+        </nav>
+        <main>
+            <!-- This is where the content of each individual page will go -->
+            <slot />
+        </main>
+    </body>
+</html>
