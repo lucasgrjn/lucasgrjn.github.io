@@ -163,7 +163,7 @@ const { title } = Astro.props;
         <script>
             const toggleButton = document.getElementById('theme-toggle');
             
-            toggleButton.addEventListener('click', () => {
+            toggleButton?.addEventListener('click', () => {
                 const currentTheme = document.documentElement.getAttribute('data-theme');
                 let targetTheme = 'light';
 
