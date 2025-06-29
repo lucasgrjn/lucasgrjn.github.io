@@ -47,7 +47,53 @@ import Layout from '../layouts/Layout.astro';
                 <p>
                     Through my projects and research, I aim to contribute to the advancement of photonic 
                     integrated circuits and AI applications, while sharing knowledge with the community.
+                <!-- </p>
+                <p> -->
+                    Beyond my technical work, I have a passion for problem solving that extends to escape games 
+                    and mechanical puzzles. I enjoy collecting them few years ago and the challenge they present.
                 </p>
+                
+                <!-- <div class="puzzle-collection"> -->
+                    <h3>Mechanical Puzzle Collection</h3>
+                    <div class="puzzle-grid">
+                        <div class="puzzle-item">
+                            <img src="/images/puzzles/cast_keyring.png" alt="Mechanical Puzzle 1" />
+                            <p class="puzzle-name">Puzzle Name 1</p>
+                        </div>
+                        <div class="puzzle-item">
+                            <img src="/images/puzzles/lotus.png" alt="Mechanical Puzzle 1" />
+                            <p class="puzzle-name">Puzzle Name 2</p>
+                        </div>
+                        <div class="puzzle-item">
+                            <img src="/images/puzzles/cylinder.png" alt="Mechanical Puzzle 3" />
+                            <p class="puzzle-name">Puzzle Name 3</p>
+                        </div>
+                        <div class="puzzle-item">
+                            <img src="/images/puzzles/bolt_action.png" alt="Mechanical Puzzle 1" />
+                            <p class="puzzle-name">Puzzle Name 1</p>
+                        </div>
+                        <div class="puzzle-item">
+                            <img src="/images/puzzles/box.png" alt="Mechanical Puzzle 2" />
+                            <p class="puzzle-name">Puzzle Name 2</p>
+                        </div>
+                        <div class="puzzle-item">
+                            <img src="/images/puzzles/wanderer.png" alt="Mechanical Puzzle 2" />
+                            <p class="puzzle-name">Puzzle Name 2</p>
+                        </div>
+                        <div class="puzzle-item">
+                            <img src="/images/puzzles/pachinko.png" alt="Mechanical Puzzle 2" />
+                            <p class="puzzle-name">Puzzle Name 2</p>
+                        </div>
+                        <div class="puzzle-item">
+                            <img src="/images/puzzles/mighty_pin.png" alt="Mechanical Puzzle 1" />
+                            <p class="puzzle-name">Puzzle Name 1</p>
+                        </div>
+                        <div class="puzzle-item">
+                            <img src="/images/puzzles/stella.png" alt="Mechanical Puzzle 2" />
+                            <p class="puzzle-name">Puzzle Name 2</p>
+                        </div>
+                    </div>
+                <!-- </div> -->
             </div>
         </section>
 
@@ -223,6 +269,55 @@ import Layout from '../layouts/Layout.astro';
             line-height: 1.7;
             margin-bottom: 1.5rem;
             color: var(--color-text);
+        }
+
+        .puzzle-collection {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--color-link);
+        }
+
+        .puzzle-collection h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-text);
+        }
+
+        .puzzle-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .puzzle-item {
+            text-align: center;
+            background: var(--color-bg);
+            border: 1px solid var(--color-link);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .puzzle-item:hover {
+            transform: translateY(-4px);
+            border-color: var(--color-link-hover);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .puzzle-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .puzzle-name {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--color-text);
+            margin: 0;
         }
 
         .main-projects {
