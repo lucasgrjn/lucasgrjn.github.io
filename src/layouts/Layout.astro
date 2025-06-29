@@ -81,18 +81,23 @@ const { title, class: bodyClass } = Astro.props;
             nav {
                 position: fixed;
                 top: 0;
+                left: 0;
                 right: 0;
                 z-index: 1000;
                 display: flex;
-                justify-content: space-between;
-                width: 750px;
+                justify-content: flex-end;
                 background-color: var(--color-bg);
-                padding: 1rem 1.5rem;
+                padding: 1rem 2rem;
                 box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
                 border-bottom: 1px solid var(--color-link);
-                border-left: 1px solid var(--color-link);
-                border-bottom-left-radius: 8px;
                 backdrop-filter: blur(10px);
+            }
+
+            nav > div {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 750px;
             }
 
             /* --- Main Content Styles --- */
@@ -148,26 +153,28 @@ const { title, class: bodyClass } = Astro.props;
     </head>
     <body class={bodyClass}>
         <nav>
-            <a href="/">Home</a>
-            <a href="/cv">CV</a>
-            <a href="/projects">Projects</a>
-            
-            <!-- <a href="YOUR_FONDERIE_GITHUB_URL" target="_blank" rel="noopener noreferrer"> -->
-            <a href="/fonderie">
-                <img src="images/icon_fonderie.png" alt="Fonderie Icon" class="nav-icon" />
-                <span class="default-text">Fonderie</span>
-                <span class="hover-text fonderie-hover-text">Fonderie</span>
-            </a>
+            <div>
+                <a href="/">Home</a>
+                <a href="/cv">CV</a>
+                <a href="/projects">Projects</a>
+                
+                <!-- <a href="YOUR_FONDERIE_GITHUB_URL" target="_blank" rel="noopener noreferrer"> -->
+                <a href="/fonderie">
+                    <img src="images/icon_fonderie.png" alt="Fonderie Icon" class="nav-icon" />
+                    <span class="default-text">Fonderie</span>
+                    <span class="hover-text fonderie-hover-text">Fonderie</span>
+                </a>
 
-            <!-- <a href="YOUR_MANGOUSTAN_GITHUB_URL" target="_blank" rel="noopener noreferrer"> -->
-            <a href="/mangoustan">
-                <img src="images/icon_mangoustan.png" alt="Mangoustan Icon" class="nav-icon" />
-                <span class="default-text">Mangoustan</span>
-                <span class="hover-text mangoustan-hover-text">Mangoustan</span>
-            </a>
+                <!-- <a href="YOUR_MANGOUSTAN_GITHUB_URL" target="_blank" rel="noopener noreferrer"> -->
+                <a href="/mangoustan">
+                    <img src="images/icon_mangoustan.png" alt="Mangoustan Icon" class="nav-icon" />
+                    <span class="default-text">Mangoustan</span>
+                    <span class="hover-text mangoustan-hover-text">Mangoustan</span>
+                </a>
 
-            <!-- The HTML for the theme toggle button -->
-            <button id="theme-toggle" class="theme-toggle">Toggle Theme</button>
+                <!-- The HTML for the theme toggle button -->
+                <button id="theme-toggle" class="theme-toggle">Toggle Theme</button>
+            </div>
         </nav>
         <main>
             <slot />
