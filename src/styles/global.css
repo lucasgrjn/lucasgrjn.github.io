@@ -24,3 +24,9 @@ h3.fonderie-text {
 .mangoustan-text {
     font-family: 'Space Grotesk', sans-serif;
 }
+/* Dark mode styles */
+[data-theme='dark'] {
+    background-color: #121212;
+    color: #eee;
+}
+
