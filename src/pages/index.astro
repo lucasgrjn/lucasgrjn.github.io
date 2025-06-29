@@ -47,53 +47,12 @@ import Layout from '../layouts/Layout.astro';
                 <p>
                     Through my projects and research, I aim to contribute to the advancement of photonic 
                     integrated circuits and AI applications, while sharing knowledge with the community.
-                <!-- </p>
-                <p> -->
-                    Beyond my technical work, I have a passion for problem solving that extends to escape games 
-                    and mechanical puzzles. I enjoy collecting them few years ago and the challenge they present.
                 </p>
-                
-                <!-- <div class="puzzle-collection"> -->
-                    <h3>Mechanical Puzzle Collection</h3>
-                    <div class="puzzle-grid">
-                        <div class="puzzle-item">
-                            <img src="/images/puzzles/cast_keyring.png" alt="Mechanical Puzzle 1" />
-                            <p class="puzzle-name">Puzzle Name 1</p>
-                        </div>
-                        <div class="puzzle-item">
-                            <img src="/images/puzzles/lotus.png" alt="Mechanical Puzzle 1" />
-                            <p class="puzzle-name">Puzzle Name 2</p>
-                        </div>
-                        <div class="puzzle-item">
-                            <img src="/images/puzzles/cylinder.png" alt="Mechanical Puzzle 3" />
-                            <p class="puzzle-name">Puzzle Name 3</p>
-                        </div>
-                        <div class="puzzle-item">
-                            <img src="/images/puzzles/bolt_action.png" alt="Mechanical Puzzle 1" />
-                            <p class="puzzle-name">Puzzle Name 1</p>
-                        </div>
-                        <div class="puzzle-item">
-                            <img src="/images/puzzles/box.png" alt="Mechanical Puzzle 2" />
-                            <p class="puzzle-name">Puzzle Name 2</p>
-                        </div>
-                        <div class="puzzle-item">
-                            <img src="/images/puzzles/wanderer.png" alt="Mechanical Puzzle 2" />
-                            <p class="puzzle-name">Puzzle Name 2</p>
-                        </div>
-                        <div class="puzzle-item">
-                            <img src="/images/puzzles/pachinko.png" alt="Mechanical Puzzle 2" />
-                            <p class="puzzle-name">Puzzle Name 2</p>
-                        </div>
-                        <div class="puzzle-item">
-                            <img src="/images/puzzles/mighty_pin.png" alt="Mechanical Puzzle 1" />
-                            <p class="puzzle-name">Puzzle Name 1</p>
-                        </div>
-                        <div class="puzzle-item">
-                            <img src="/images/puzzles/stella.png" alt="Mechanical Puzzle 2" />
-                            <p class="puzzle-name">Puzzle Name 2</p>
-                        </div>
-                    </div>
-                <!-- </div> -->
+
+                <p>
+                Beyond my technical work, I have a passion for problem solving that extends to escape games 
+                and mechanical puzzles. I enjoy collecting them few years ago and the challenge they present.
+                </p>
             </div>
         </section>
 
@@ -155,6 +114,52 @@ import Layout from '../layouts/Layout.astro';
                     <div class="expertise-icon">💻</div>
                     <h3>Software Development</h3>
                     <p>Python, C/C++, embedded systems, and full-stack web development.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="puzzle-section">
+            <div class="puzzle-content">
+                <h2>Mechanical Puzzle Collection</h2>
+                <!-- <p>Here are some of the mechanical puzzles I've collected over the years. Each one presents unique challenges and showcases different problem-solving approaches.</p> -->
+                <p>Here are some of the mechanical puzzles I've collected over the years. Feel-free to contact me if you want to know more about them, or if you also have some!</p>
+                <div class="puzzle-grid">
+                    <div class="puzzle-item">
+                        <img src="/images/puzzles/cast_keyring.png" alt="Cast Keyring Puzzle" />
+                        <p class="puzzle-name">Cast Keyring</p>
+                    </div>
+                    <div class="puzzle-item">
+                        <img src="/images/puzzles/lotus.png" alt="Lotus Puzzle" />
+                        <p class="puzzle-name">Lotus</p>
+                    </div>
+                    <div class="puzzle-item">
+                        <img src="/images/puzzles/cylinder.png" alt="Cylinder Puzzle" />
+                        <p class="puzzle-name">Cylinder</p>
+                    </div>
+                    <div class="puzzle-item">
+                        <img src="/images/puzzles/bolt_action.png" alt="Bolt Action Puzzle" />
+                        <p class="puzzle-name">Bolt Action</p>
+                    </div>
+                    <div class="puzzle-item">
+                        <img src="/images/puzzles/box.png" alt="Box Puzzle" />
+                        <p class="puzzle-name">Box</p>
+                    </div>
+                    <div class="puzzle-item">
+                        <img src="/images/puzzles/wanderer.png" alt="Wanderer Puzzle" />
+                        <p class="puzzle-name">Wanderer</p>
+                    </div>
+                    <div class="puzzle-item">
+                        <img src="/images/puzzles/pachinko.png" alt="Pachinko Puzzle" />
+                        <p class="puzzle-name">Pachinko</p>
+                    </div>
+                    <div class="puzzle-item">
+                        <img src="/images/puzzles/mighty_pin.png" alt="Mighty Pin Puzzle" />
+                        <p class="puzzle-name">Mighty Pin</p>
+                    </div>
+                    <div class="puzzle-item">
+                        <img src="/images/puzzles/stella.png" alt="Stella Puzzle" />
+                        <p class="puzzle-name">Stella</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -271,16 +276,32 @@ import Layout from '../layouts/Layout.astro';
             color: var(--color-text);
         }
 
-        .puzzle-collection {
+        .puzzle-section {
             margin-top: 3rem;
             padding-top: 2rem;
             border-top: 1px solid var(--color-link);
         }
 
-        .puzzle-collection h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
+        .puzzle-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .puzzle-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
             color: var(--color-text);
+        }
+
+        .puzzle-content p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            color: var(--color-text);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .puzzle-grid {
