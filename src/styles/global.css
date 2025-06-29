@@ -24,9 +24,34 @@ h3.fonderie-text {
 .mangoustan-text {
     font-family: 'Space Grotesk', sans-serif;
 }
+
+.repeating-background {
+    position: relative;
+}
+
+.repeating-background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/images/background-pattern.svg');
+    background-repeat: repeat;
+    background-position: center;
+    background-size: 50px 50px;
+    background-attachment: scroll;
+    opacity: 0.12;
+    z-index: -1;
+    pointer-events: none;
+}
+
 /* Dark mode styles */
 [data-theme='dark'] {
     background-color: #121212;
     color: #eee;
 }
 
+[data-theme='dark'] .repeating-background::before {
+    filter: invert(1) brightness(0.8); /* Invert colors for dark theme */
+}
