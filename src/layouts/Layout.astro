@@ -87,7 +87,7 @@ const { title, class: bodyClass } = Astro.props;
                 display: flex;
                 justify-content: flex-end;
                 background-color: var(--color-bg);
-                padding: 0.7rem 2rem;
+                padding: 0.7rem 4em;  /* Height + Right spacing */
                 box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
                 border-bottom: 1px solid var(--color-link);
                 backdrop-filter: blur(10px);
@@ -95,9 +95,11 @@ const { title, class: bodyClass } = Astro.props;
 
             nav > div {
                 display: flex;
-                justify-content: space-between;
+                /* justify-content: space-between; */
+                gap: 3rem;                           /* <-- Spacing between elements */
                 align-items: center;
-                width: 750px;
+                /* width: 750px; */
+                justify-content: flex-start; 
             }
 
             /* --- Main Content Styles --- */
